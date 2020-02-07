@@ -96,7 +96,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    System.out.println(myAbsoluteEncoder.get());
+    System.out.println(myAbsoluteEncoder.get() + "\n" + myRelativeEncoder.get());
   }
 
   /**
