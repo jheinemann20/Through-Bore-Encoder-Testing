@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.DutyCycle;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -31,6 +32,8 @@ public class Robot extends TimedRobot {
   private Encoder myRelativeEncoder;
   private DutyCycleEncoder myAbsoluteEncoder;
 
+  private DigitalInput myLimit = new DigitalInput(0);
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -41,8 +44,8 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
 
-    myRelativeEncoder = new Encoder(1, 2, 3);
-    myAbsoluteEncoder = new DutyCycleEncoder(0);
+    // myRelativeEncoder = new Encoder(1, 2, 3);
+    // myAbsoluteEncoder = new DutyCycleEncoder(0);
   }
 
   /**
@@ -96,7 +99,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    System.out.println(myAbsoluteEncoder.get() + "      " + myRelativeEncoder.get());
+    // System.out.println(myAbsoluteEncoder.get() + "      " + myRelativeEncoder.get());
+    System.out.println(myLimit.get());
   }
 
   /**
