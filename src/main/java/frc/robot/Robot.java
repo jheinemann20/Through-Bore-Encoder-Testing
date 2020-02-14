@@ -34,6 +34,8 @@ public class Robot extends TimedRobot {
   private DutyCycleEncoder myAbsoluteEncoder;
   private Spark myLEDs;
 
+  private double[] myColors = {0.57, 0.59, 0.61, 0.63, 0.65, 0.67, 0.69, 0.71, 0.73, 0.75};
+
   // private DigitalInput myLimit = new DigitalInput(0);
 
   /**
@@ -104,7 +106,13 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     System.out.println(myRelativeEncoder.getRate());
-    myLEDs.set(myRelativeEncoder.getRate());
+    int rate = (int) myRelativeEncoder.getRate();
+    if (rate > myColors.length) {
+      while (rate > myColors.length) {
+        rate = rate - myColors.length;
+      }
+    }
+    myLEDs.set(myColors[rate - 1]);
     // System.out.println(myLimit.get());
   }
 
