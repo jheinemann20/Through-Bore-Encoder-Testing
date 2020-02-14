@@ -103,8 +103,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    System.out.println(myAbsoluteEncoder.get() + "      " + myRelativeEncoder.get());
-    myLEDs.set(myRelativeEncoder.get() / 10);
+    System.out.println(myRelativeEncoder.getRate());
+    myLEDs.set(myRelativeEncoder.getRate());
     // System.out.println(myLimit.get());
   }
 
