@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DutyCycle;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -31,6 +32,7 @@ public class Robot extends TimedRobot {
 
   private Encoder myRelativeEncoder;
   private DutyCycleEncoder myAbsoluteEncoder;
+  private Spark myLEDs;
 
   // private DigitalInput myLimit = new DigitalInput(0);
 
@@ -46,6 +48,8 @@ public class Robot extends TimedRobot {
 
     myRelativeEncoder = new Encoder(1, 2, 3);
     myAbsoluteEncoder = new DutyCycleEncoder(0);
+
+    myLEDs = new Spark(0);
   }
 
   /**
@@ -100,6 +104,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     System.out.println(myAbsoluteEncoder.get() + "      " + myRelativeEncoder.get());
+    myLEDs.set(myRelativeEncoder.get() / 10);
     // System.out.println(myLimit.get());
   }
 
